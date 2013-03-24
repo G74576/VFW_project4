@@ -145,7 +145,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	function getRecipes(){
 		toggleControls("on");
 		if(localStorage.length === 0){
-			alert("There are no recipes in your local storage.");
+			alert("There are no recipes in your local storage so default recipes were added.");
+			autoFillRecipe();
 		}
 		//Write Data from Local Storage to the browser.
 		var makeNewDiv = document.createElement("div"); 			// Create new div tag
@@ -164,6 +165,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var makeNewSubList = document.createElement("ul"); 		// Creates a new sub list to display the objects of the list
 			makeNewSubList.setAttribute("id", "newSubList");
 			makeNewli.appendChild(makeNewSubList); 					// Appends the new ul to the li tag
+			getImage(newObj.types[1], makeNewSubList);
 			for(var n in newObj){ 									// creates a for in loop of the object data
 				var makeNewSubli = document.createElement("li"); 	// Creates a new li item to display the objects in the group
 				makeNewSubList.appendChild(makeNewSubli); 			// Appends the new li to the new ul tag
@@ -174,6 +176,27 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeDisplayItemLinks(localStorage.key(i), dataLinksLi); // create our edit and delete buttons/link for local storage.
 		}
 	}
+	
+	//Get the image for the right recipe category
+	function getImage(imageName, makeNewSubList){
+		var imageLi = document.createElement("li");
+		makeNewSubList.appendChild(imageLi);
+		var newImage = document.createElement("img");
+		//Name icon images (imageName) the exact same as the type group names.
+		var setSource = newImage.setAttribute("src", "images/"+ imageName + ".png");
+		imageLi.appendChild(newImage);
+	}
+	
+	//JSON OBJECT which will auto populate local storage
+	function autoFillRecipe(){
+		//The actual JSON OBJECT data required for this to work is coming from our json.js file, which is loaded from our HTML page
+		//Store the JSON Object into local storage.
+		for(var n in json){
+			var id = Math.floor(Math.random()*1000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
+	}
+	
 	
 	// Make Item Links Function. Creating the edit and delete links for each stored item when displayed.
 	function makeDisplayItemLinks(key, dataLinksLi){
