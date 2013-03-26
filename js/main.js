@@ -165,7 +165,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var makeNewSubList = document.createElement("ul"); 		// Creates a new sub list to display the objects of the list
 			makeNewSubList.setAttribute("id", "newSubList");
 			makeNewli.appendChild(makeNewSubList); 					// Appends the new ul to the li tag
-			getImage(newObj.types[1], makeNewSubList);
+			getImage(newObj.group[1], makeNewSubList);
 			for(var n in newObj){ 									// creates a for in loop of the object data
 				var makeNewSubli = document.createElement("li"); 	// Creates a new li item to display the objects in the group
 				makeNewSubList.appendChild(makeNewSubli); 			// Appends the new li to the new ul tag
