@@ -125,7 +125,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.todaysDate 	= ["Date Added:", $("todaysDate").value];
 /*radio*/	item.family 		= ["Related", relatedValue];
 			item.email 			= ["Email:", $("email").value];
-			item.group 			= ["Group", $("types").value];
+			item.group 			= ["Type of Recipe:", $("types").value];
 			item.range 			= ["Difficulty:", $("range").value];
 /*chk box*/	item.whenCooked		= ["When You Cook This:", whenCookedValue];
 			item.specify		= ["Other Time:", $("specify").value];
@@ -180,6 +180,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	//Get the image for the right recipe category
 	function getImage(imageName, makeNewSubList){
 		var imageLi = document.createElement("li");
+		imageLi.setAttribute("id", "icons");
 		makeNewSubList.appendChild(imageLi);
 		var newImage = document.createElement("img");
 		//Name icon images (imageName) the exact same as the type group names.
