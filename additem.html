@@ -49,8 +49,8 @@
 				<legend>Your Recipe</legend>
 					<ul id="recipeInfo">
 						<li id="selectType"><label for="type">*What type of recipe will this be&#63;</label><br /></li>
-						<li><label for="range">Select the level of difficulty&#58;</label><br />
-							<small>&#40;Easy&#41;</small><input type="range" min="1" max="10" name="range" id="range" /><small>&#40;Difficult&#41;</small>
+						<li><label for="range">Select the level of difficulty&#58; </label><output for="range" name="dlevel">5</output><br />
+							<small>&#40;Easy&#41;</small><input type="range" min="1" max="10" step="1" value="5" onchange="dlevel.value=(this.value)" name="range" id="range" /><small>&#40;Difficult&#41;</small>
 						</li>
 						<li>When do you make this&#63;<br />
 							<small>&#40;Check all that apply&#41;</small>
